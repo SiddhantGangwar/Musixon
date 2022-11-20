@@ -36,8 +36,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //connectiong to mongodb collection(sql -> database)
-mongoose.connect("mongodb://localhost:27107/musixon", {useNewUrlParse: true});
-mongoose.set("useCreateIndex", true);
+mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
+//mongoose.set("useCreateIndex", true); // no need in latest moongoose version
 
 //require user model from models
 const User = require("./models/user");
@@ -46,22 +46,22 @@ const User = require("./models/user");
 
 passport.use(User.createStrategy());
 
-passport.serializeUser( (user, done) => {
+passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserilizeUser( (id, done) => {
-  User.findById(id, (err, user) => {
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
     done(err, user);
-  })
+  });
 });
 
 
 // code for google Oauth, see from lect 386
 passport.use(new GoogleStrategy({
-  clientID: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/mainPage",
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: "https://localhost:3000/auth/google/mainPage",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function(accessToken, refreshToken, profile, cb) {
@@ -72,7 +72,7 @@ function(accessToken, refreshToken, profile, cb) {
   });
 }
 ));
-// setup complete |fin|
+// setup complete ||| fin |||
 
 
 app.get("/", (req, res) => {
@@ -80,10 +80,17 @@ app.get("/", (req, res) => {
 });
 
 // when logging in throug google btn, request will be made to auth/google
-app.get("auth/google", (req, res) => {
+app.get("/auth/google", (req, res) => {
   passport.authenticate('google', { scope: ["profile"] })
 });
 
+app.get("/auth/google/mainPage",
+  passport.authenticate("google", {failureRedirect: "login"}), 
+  (req, res) => {
+    // Successful authentication, redirect to Websites main page.
+    res.redirect("mainPage");
+  }
+);
 
 app.get("/mainPage", (req, res) => {
   User.find({"secret": {$ne: null}}, function(err, foundUsers){
@@ -95,7 +102,71 @@ app.get("/mainPage", (req, res) => {
       }
     }
   });
-})
+});
+
+
+
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+/*app.get("/logout", function(req, res){
+  req.logout();
+  res.redirect("/");
+});*/
+
+app.post("/register", (req, res) => {
+
+  User.register({username: req.body.username}, req.body.password, function(err, user){
+    if (err) {
+      console.log(err);
+      res.redirect("/register");
+    } else {
+      passport.authenticate("local")(req, res, function(){
+        res.redirect("/mainPage");
+      });
+    }
+  });
+
+});
+
+app.post("/login", (req, res) => {
+
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
+  });
+
+  req.login(user, function(err){
+    if (err) {
+      console.log(err);
+    } else {
+      passport.authenticate("local")(req, res, function(){
+        res.redirect("/mainPage");
+      });
+    }
+  });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
