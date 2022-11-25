@@ -13,17 +13,22 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
+// require path
+var path = require('path');
+
 //using express
 const app = express();
 
 //setting body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//code so that css is also rendered with html pages
-app.use(express.static("public"))
-
 //setting ejs
 app.set('view engine','ejs');
+
+
+//code so that css is also rendered with html pages
+//app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //setting up express-session
 app.use(session({
@@ -98,7 +103,7 @@ app.get("/mainPage", (req, res) => {
       console.log(err);
     } else {
       if (foundUsers) {
-        res.render("mainPage");
+        res.sendFile('views/mainPage.html', {root: __dirname })
       }
     }
   });
