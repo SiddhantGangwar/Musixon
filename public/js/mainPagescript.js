@@ -46,6 +46,7 @@ masterPlay.addEventListener('click', ()=>{
     }
 })
 // Listen to Events
+//time update and seeker
 audioElement.addEventListener('timeupdate', ()=>{ 
     // Update Seekbar
     progress = parseInt((audioElement.currentTime/audioElement.duration)* 100); 
@@ -78,7 +79,7 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
         masterPlay.classList.add('fa-pause-circle');
     })
 })
-
+//Handles next button
 document.getElementById('next').addEventListener('click', ()=>{
     if(songIndex>=9){
         songIndex = 0
@@ -94,7 +95,7 @@ document.getElementById('next').addEventListener('click', ()=>{
     masterPlay.classList.add('fa-pause-circle');
 
 })
-
+// handele previous button
 document.getElementById('previous').addEventListener('click', ()=>{
     if(songIndex<=0){
         songIndex = 0
@@ -108,4 +109,14 @@ document.getElementById('previous').addEventListener('click', ()=>{
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
+})
+
+//handles shuffle button
+document.getElementById("shuffle").addEventListener("click", ()=>{
+
+})
+
+//handles repeat button
+document.getElementById("repeat").addEventListener("click", ()=>{
+    
 })
