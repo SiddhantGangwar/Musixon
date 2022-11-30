@@ -122,6 +122,14 @@ document.getElementById('next').addEventListener('click', ()=>{
         if(songIndex>9 && repeat_state){
             songIndex = 0;
         }
+        if(shuffle_state){
+            if(songs.length > 1){
+                songIndex = randomIntFromInterval(0, songs.length);
+            } else {
+                songIndex = songIndex;
+            }
+
+        }
     }
 
     //calling playSong function
