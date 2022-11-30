@@ -142,25 +142,25 @@ function redrawShuffle(){
 repeat.addEventListener("click", ()=>{
     console.log("Repeat");
     if(!repeat_state){
-        repeat_state = !repeat_state;
+        repeat_state = true;
     }else if(!repeat_one){
-        repeat_one = !repeat_one;
+        repeat_one = true;
     }else{
-        repeat_state = !repeat_state;
-        repeat_one = !repeat_one;
+        repeat_state = false;
+        repeat_one = false;
     }
     redrawRepeat();
 })
 
 function redrawRepeat(){
-    if(repeat_state && !repeat_one){
-        repeat.classList.add("blue");
-    }else if(repeat_one && repeat_one){
-        repeat.classList.remove("fa-repeat");
-        repeat.classList.add("fa-repeat");
-    }else{
-        repeat.classList.remove("fa-repeat");
+    if( !repeat_state){
+        repeat.classList.remove("fa-person-walking-arrow-loop-left");
         repeat.classList.remove("blue");
         repeat.classList.add("fa-repeat");
+    }else if(!repeat_one){
+        repeat.classList.add("blue");
+    }else{
+        repeat.classList.remove("fa-repeat");
+        repeat.classList.add("fa-person-walking-arrow-loop-left");
     }
 }
