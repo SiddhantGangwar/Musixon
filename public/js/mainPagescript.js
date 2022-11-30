@@ -125,7 +125,7 @@ document.getElementById('previous').addEventListener('click', ()=>{
 //handles shuffle button
 shuffle.addEventListener("click", ()=>{
     shuffle_state = !shuffle_state;
-    console.log("Shuffle");
+    //console.log("Shuffle");
     redrawShuffle();
 })
 
@@ -140,7 +140,7 @@ function redrawShuffle(){
 
 //handles repeat button
 repeat.addEventListener("click", ()=>{
-    console.log("Repeat");
+    //console.log("Repeat");
     if(!repeat_state){
         repeat_state = true;
     }else if(!repeat_one){
