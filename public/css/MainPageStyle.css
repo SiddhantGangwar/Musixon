@@ -110,6 +110,10 @@ nav ul li{
     font-family: 'Varela Round', sans-serif;
 }
 
+.blue{
+    color: aqua;
+}
+
 .songInfo img{
     opacity: 0;
     transition: opacity 0.4s ease-in;

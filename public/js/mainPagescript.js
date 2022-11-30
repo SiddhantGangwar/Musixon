@@ -4,10 +4,21 @@
 let songIndex = 0;
 let audioElement = new Audio('/songs/1.mp3');
 let masterPlay = document.getElementById('masterPlay');
+let shuffle = document.getElementById('shuffle');
+let repeat = document.getElementById('repeat');
 let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
 let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
+// Variables for state of shuffle and repeat, playing state
+let isplaying = false;
+let shuffle_state = false;
+let repeat_state = false;
+let repeat_one = false;
+
+// variable to keep track if song is playing
+let isPlaying = false;
+
 
 // creating a songs obj array 
 let songs = [
@@ -112,11 +123,44 @@ document.getElementById('previous').addEventListener('click', ()=>{
 })
 
 //handles shuffle button
-document.getElementById("shuffle").addEventListener("click", ()=>{
-
+shuffle.addEventListener("click", ()=>{
+    shuffle_state = !shuffle_state;
+    console.log("Shuffle");
+    redrawShuffle();
 })
+
+function redrawShuffle(){
+    // adding and removing color
+    if(shuffle_state){
+        shuffle.classList.add('blue');
+    } else {
+        shuffle.classList.remove('blue');
+    }
+}
 
 //handles repeat button
-document.getElementById("repeat").addEventListener("click", ()=>{
-    
+repeat.addEventListener("click", ()=>{
+    console.log("Repeat");
+    if(!repeat_state){
+        repeat_state = !repeat_state;
+    }else if(!repeat_one){
+        repeat_one = !repeat_one;
+    }else{
+        repeat_state = !repeat_state;
+        repeat_one = !repeat_one;
+    }
+    redrawRepeat();
 })
+
+function redrawRepeat(){
+    if(repeat_state && !repeat_one){
+        repeat.classList.add("blue");
+    }else if(repeat_one && repeat_one){
+        repeat.classList.remove("fa-repeat");
+        repeat.classList.add("fa-repeat");
+    }else{
+        repeat.classList.remove("fa-repeat");
+        repeat.classList.remove("blue");
+        repeat.classList.add("fa-repeat");
+    }
+}
