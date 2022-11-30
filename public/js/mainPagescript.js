@@ -62,11 +62,37 @@ audioElement.addEventListener('timeupdate', ()=>{
     // Update Seekbar
     progress = parseInt((audioElement.currentTime/audioElement.duration)* 100); 
     myProgressBar.value = progress;
+    changeCurrent_totalDuraiton();
 })
 
 myProgressBar.addEventListener('change', ()=>{
     audioElement.currentTime = myProgressBar.value * audioElement.duration/100;
+    changeCurrent_totalDuraiton();
 })
+
+// function for updating the current time
+function changeCurrent_totalDuraiton(){
+    let musicCurrentTime = document.getElementById("current");
+    let musicDuration = document.getElementById("duration");
+    //getting the total duration from audio element
+    audioElement.addEventListener("loadeddata", ()=>{
+        let audioDuration = audioElement.duration;
+        let totalMin = Math.floor(audioDuration/60);
+        let totalSec = Math.floor(audioDuration%60);
+        if(totalSec < 10){
+            totalSec = `0${totalSec}`;
+        }
+        musicDuration.innerText = `${totalMin}:${totalSec}`;
+    });
+
+    // changing the current time
+    let currentMin = Math.floor(audioElement.currentTime/60);
+    let currentSec = Math.floor(audioElement.currentTime%60);
+    if(currentSec < 10){
+        currentSec = `0${currentSec}`;
+    }
+    musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
+}
 
 const makeAllPlays = ()=>{
     Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
