@@ -22,9 +22,9 @@ let isPlaying = false;
 
 // creating a songs obj array 
 let songs = [
-    {songName: "Warriyo - Mortals ", filePath: "/songs/1.mp3", coverPath: "/covers/1.jpg"},
-    {songName: "Cielo - Huma-Huma", filePath: "/songs/2.mp3", coverPath: "/covers/2.jpg"},
-    {songName: "DEAF KEV - Invincible ", filePath: "/songs/3.mp3", coverPath: "/covers/3.jpg"},
+    {songName: "Daku - Chani Nattan ", filePath: "/songs/1.mp3", coverPath: "/covers/1.jpg"},
+    {songName: "Keshariya - Bhramasatra", filePath: "/songs/2.mp3", coverPath: "/covers/2.jpg"},
+    {songName: "Srivali - Pushpa ", filePath: "/songs/3.mp3", coverPath: "/covers/3.jpg"},
     {songName: "Different Heaven & EH!DE - My Heart ", filePath: "/songs/4.mp3", coverPath: "/covers/4.jpg"},
     {songName: "Janji-Heroes-Tonight", filePath: "/songs/5.mp3", coverPath: "/covers/5.jpg"},
     {songName: "Rabba - Salam-e-Ishq", filePath: "/songs/2.mp3", coverPath: "/covers/6.jpg"},
@@ -113,7 +113,10 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
     })
 })
 //Handles next button
-document.getElementById('next').addEventListener('click', ()=>{
+document.getElementById('next').addEventListener('click', nextSong)
+
+//function handler for nextSong
+function nextSong(){
     // bsic shuffle and repeat feature
     if(repeat_one){
         songIndex = songIndex;
@@ -143,7 +146,8 @@ document.getElementById('next').addEventListener('click', ()=>{
         audioElement.currentTime = 0;
     }
 
-})
+};
+
 // handele previous button
 document.getElementById('previous').addEventListener('click', ()=>{
     // checking which index to choose according to repeat_state
@@ -179,7 +183,8 @@ function randomIntFromInterval(min,max){
 // playSong function, loads song from given index
 function playSong(songIndex){
     audioElement.pause();
-    audioElement.src = `/songs/${songIndex+1}.mp3`;
+    //audioElement.src = `/songs/${songIndex+1}.mp3`;
+    audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
@@ -230,3 +235,6 @@ function redrawRepeat(){
         repeat.classList.add("fa-person-walking-arrow-loop-left");
     }
 }
+
+// Event Listener calls next method when song ended
+audioElement.addEventListener("ended", nextSong)
