@@ -114,7 +114,7 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
 })
 //Handles next button
 document.getElementById('next').addEventListener('click', ()=>{
-
+    // bsic shuffle and repeat feature
     if(repeat_one){
         songIndex = songIndex;
     }else{
