@@ -34,6 +34,12 @@ let songs = [
     {songName: "Na Jaana - Salam-e-Ishq", filePath: "/songs/4.mp3", coverPath: "/covers/10.jpg"},
 ]
 
+// variable for songs Queue
+let songQueueIndex = 0;
+let songsQueue = [];
+
+
+
 // initialize all songs object in html page with there values from song array
 songItems.forEach((element, i)=>{ 
     element.getElementsByTagName("img")[0].src = songs[i].coverPath; 
@@ -44,10 +50,12 @@ songItems.forEach((element, i)=>{
 // Handle play/pause click
 masterPlay.addEventListener('click', ()=>{
     if(audioElement.paused || audioElement.currentTime<=0){
-        audioElement.play();
-        masterPlay.classList.remove('fa-play-circle');
-        masterPlay.classList.add('fa-pause-circle');
-        gif.style.opacity = 1;
+        if(audioElement.src !== ''){
+            audioElement.play();
+            masterPlay.classList.remove('fa-play-circle');
+            masterPlay.classList.add('fa-pause-circle');
+            gif.style.opacity = 1;
+        }
     }
     else{
         audioElement.pause();
@@ -104,12 +112,29 @@ const makeAllPlays = ()=>{
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
     element.addEventListener('click', (e)=>{ 
         makeAllPlays();
+
+        
+        //Adding function to run full playlist on click from here if queue empty
+        // else only normally play/pause
+
         songIndex = parseInt(e.target.id);
+        
+        if(songQueueIndex === songsQueue.length){
+            addInQueue(songIndex);
+            songQueueIndex = 0;
+        }else{
+            // add element preserving the queue and this song plays first;
+            songsQueue.length = 0;
+            addInQueue(songIndex);
+            songQueueIndex = 0;
+        }
+        
+        
         e.target.classList.remove('fa-play-circle');
         e.target.classList.add('fa-pause-circle');
         gif.style.opacity = 1;
         //calling playSong function
-        playSong(songIndex);
+        playSong(songQueueIndex);
     })
 })
 //Handles next button
@@ -117,33 +142,43 @@ document.getElementById('next').addEventListener('click', nextSong)
 
 //function handler for nextSong
 function nextSong(){
-    // bsic shuffle and repeat feature
-    if(repeat_one){
-        songIndex = songIndex;
-    }else{
-        songIndex++;
-        if(songIndex>9 && repeat_state){
-            songIndex = 0;
-        }
-        if(shuffle_state){
-            if(songs.length > 1){
-                songIndex = randomIntFromInterval(0, songs.length);
-            } else {
-                songIndex = songIndex;
+    if(songsQueue.length !== 0){
+        // basic shuffle and repeat feature
+        if(repeat_one){
+            songQueueIndex = songQueueIndex;
+        }else{
+            songQueueIndex++;
+            if(songQueueIndex>=songsQueue.length && repeat_state){
+                songQueueIndex = 0;
             }
+            if(shuffle_state && songQueueIndex < songsQueue.length){
+                if(songsQueue.length - songQueueIndex > 1){
+                    let indexToAllot = randomIntFromInterval(songQueueIndex, songsQueue.length);
+                    while(songQueueIndex === indexToAllot){
+                        indexToAllot = randomIntFromInterval(songQueueIndex, songsQueue.length);
+                    }
+                    let indexValueToAllot = songsQueue[indexToAllot];
+                    //exchange value between new shuffle audio and one already in queue
+                    songsQueue[indexToAllot] = songsQueue[songQueueIndex];
+                    songsQueue[songQueueIndex] = indexValueToAllot;
 
+                } else {
+                    songQueueIndex = songQueueIndex;
+                }
+
+            }
         }
-    }
 
-    //calling playSong function
-    if(repeat_state || songIndex<songs.length){
-        playSong(songIndex);
-    }else{
-        audioElement.pause();
-        audioElement.src = ``;
-        masterSongName.innerText = "Song Name";
-        masterSongName.innerText = "";
-        audioElement.currentTime = 0;
+        //calling playSong function
+        if(repeat_state || songQueueIndex < songsQueue.length){
+            playSong(songQueueIndex);
+        }else{
+            audioElement.pause();
+            audioElement.src = ``;
+            masterSongName.innerText = "Song Name";
+            masterSongName.innerText = "";
+            audioElement.currentTime = 0;
+        }
     }
 
 };
@@ -152,17 +187,17 @@ function nextSong(){
 document.getElementById('previous').addEventListener('click', ()=>{
     // checking which index to choose according to repeat_state
     if(repeat_one){
-        songIndex =songIndex;
+        songQueueIndex = songQueueIndex;
     }else{
-        songIndex--;
-        if(songIndex<0 && repeat_state){
-            songIndex = songs.length + songIndex;
+        songQueueIndex--;
+        if(songQueueIndex < 0 && repeat_state){
+            songQueueIndex = songsQueue.length + songQueueIndex;
         }
     }
 
     //calling playSong function
-    if(repeat_state || songIndex>=0){
-        playSong(songIndex);
+    if(repeat_state || songQueueIndex >= 0){
+        playSong(songQueueIndex);
     }else{
         audioElement.pause();
         audioElement.src = ``;
@@ -181,15 +216,24 @@ function randomIntFromInterval(min,max){
 
 
 // playSong function, loads song from given index
-function playSong(songIndex){
+function playSong(songQueueIndex){
     audioElement.pause();
     //audioElement.src = `/songs/${songIndex+1}.mp3`;
-    audioElement.src = songs[songIndex].filePath;
-    masterSongName.innerText = songs[songIndex].songName;
+
+    let songToBePlayed = songs[songsQueue[songQueueIndex]];
+
+    audioElement.src = songToBePlayed.filePath;
+    masterSongName.innerText = songToBePlayed.songName;
     audioElement.currentTime = 0;
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
+}
+
+//function to add song in queue
+
+function addInQueue(songIndex){
+    songsQueue.push(songIndex);
 }
 
 
