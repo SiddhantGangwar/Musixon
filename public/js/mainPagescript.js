@@ -50,11 +50,13 @@ songItems.forEach((element, i)=>{
 // Handle play/pause click
 masterPlay.addEventListener('click', ()=>{
     if(audioElement.paused || audioElement.currentTime<=0){
-        if(audioElement.src !== ''){
+        if( audioElement.currentTime > 0 ){
             audioElement.play();
             masterPlay.classList.remove('fa-play-circle');
             masterPlay.classList.add('fa-pause-circle');
             gif.style.opacity = 1;
+        }else{
+            playSong(songQueueIndex);
         }
     }
     else{
@@ -109,24 +111,26 @@ const makeAllPlays = ()=>{
     })
 }
 
+// handles play button on song list
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
     element.addEventListener('click', (e)=>{ 
         makeAllPlays();
 
-        
+        songIndex = parseInt(e.target.id);
         //Adding function to run full playlist on click from here if queue empty
         // else only normally play/pause
 
-        songIndex = parseInt(e.target.id);
-        
-        if(songQueueIndex === songsQueue.length){
+        if(songsQueue.length === 0 || songQueueIndex === songsQueue.length){
             addInQueue(songIndex);
-            songQueueIndex = 0;
         }else{
-            // add element preserving the queue and this song plays first;
-            songsQueue.length = 0;
-            addInQueue(songIndex);
-            songQueueIndex = 0;
+            if(songQueueIndex === 0){
+                // make this new song as the first in queue
+                songsQueue.unshift(songIndex);
+            }else{
+                // cuurently leave the order preserving of queue
+                songsQueue[songQueueIndex-1] = songIndex;
+                songQueueIndex--;
+            }
         }
         
         
@@ -137,12 +141,24 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
         playSong(songQueueIndex);
     })
 })
+
+// Handles the adding in queue button
+Array.from(document.getElementsByClassName('fa-solid fa-plus')).forEach((element)=>{
+    element.addEventListener('click', (e)=>{ 
+
+        songIndex = parseInt(e.target.id);
+        // add the element in playing queue
+        addInQueue(songIndex);
+    })
+})
+
+
 //Handles next button
 document.getElementById('next').addEventListener('click', nextSong)
 
 //function handler for nextSong
 function nextSong(){
-    if(songsQueue.length !== 0){
+    if(songsQueue.length !== 0 && songQueueIndex !== songsQueue.length ){
         // basic shuffle and repeat feature
         if(repeat_one){
             songQueueIndex = songQueueIndex;
@@ -172,14 +188,17 @@ function nextSong(){
         //calling playSong function
         if(repeat_state || songQueueIndex < songsQueue.length){
             playSong(songQueueIndex);
-        }else{
-            audioElement.pause();
-            audioElement.src = ``;
-            masterSongName.innerText = "Song Name";
-            masterSongName.innerText = "";
-            audioElement.currentTime = 0;
+            return;
         }
     }
+
+    audioElement.pause();
+    audioElement.src = ``;
+    masterSongName.innerText = "Song Name";
+    audioElement.currentTime = 0;
+    masterPlay.classList.remove('fa-pause-circle');
+    masterPlay.classList.add('fa-play-circle');
+    gif.style.opacity = 0;
 
 };
 
@@ -228,6 +247,7 @@ function playSong(songQueueIndex){
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
+    gif.style.opacity = 0;
 }
 
 //function to add song in queue
