@@ -37,6 +37,8 @@ let songs = [
 // variable for songs Queue
 let songQueueIndex = 0;
 let songsQueue = [];
+let shuffleQueue = [];
+let shuffleQueueIndex = 0;
 
 
 
@@ -49,16 +51,18 @@ songItems.forEach((element, i)=>{
 //Add event listners
 // Handle play/pause click
 masterPlay.addEventListener('click', ()=>{
+    //play if paused
     if(audioElement.paused || audioElement.currentTime<=0){
+        //For resuming song
         if( audioElement.currentTime > 0 ){
             audioElement.play();
             masterPlay.classList.remove('fa-play-circle');
             masterPlay.classList.add('fa-pause-circle');
             gif.style.opacity = 1;
-        }else{
+        }else{// if no song present then start a new song
             playSong(songQueueIndex);
         }
-    }
+    }//pause if song already played
     else{
         audioElement.pause();
         masterPlay.classList.remove('fa-pause-circle');
@@ -158,7 +162,8 @@ document.getElementById('next').addEventListener('click', nextSong)
 
 //function handler for nextSong
 function nextSong(){
-    if(songsQueue.length !== 0 && songQueueIndex !== songsQueue.length ){
+    //using normal queue, when shuffle not set
+    if( !shuffle_state && songsQueue.length !== 0 && songQueueIndex !== songsQueue.length ){
         // basic shuffle and repeat feature
         if(repeat_one){
             songQueueIndex = songQueueIndex;
@@ -167,27 +172,28 @@ function nextSong(){
             if(songQueueIndex>=songsQueue.length && repeat_state){
                 songQueueIndex = 0;
             }
-            if(shuffle_state && songQueueIndex < songsQueue.length){
-                if(songsQueue.length - songQueueIndex > 1){
-                    let indexToAllot = randomIntFromInterval(songQueueIndex, songsQueue.length);
-                    while(songQueueIndex === indexToAllot){
-                        indexToAllot = randomIntFromInterval(songQueueIndex, songsQueue.length);
-                    }
-                    let indexValueToAllot = songsQueue[indexToAllot];
-                    //exchange value between new shuffle audio and one already in queue
-                    songsQueue[indexToAllot] = songsQueue[songQueueIndex];
-                    songsQueue[songQueueIndex] = indexValueToAllot;
-
-                } else {
-                    songQueueIndex = songQueueIndex;
-                }
-
-            }
         }
 
         //calling playSong function
         if(repeat_state || songQueueIndex < songsQueue.length){
             playSong(songQueueIndex);
+            return;
+        }
+    }
+    // use this if shuffle set
+    if( shuffle_state && shuffleQueue.length !== 0 && shuffleQueueIndex !== shuffleQueue.length ){
+        if(repeat_one){
+            shuffleQueueIndex = shuffleQueueIndex;
+        }else{
+            shuffleQueueIndex++;
+            if(songQueueIndex>=shuffleQueue.length && repeat_state){
+                shuffleQueueIndex = 0;
+            }
+        }
+
+        //calling playSong function
+        if(repeat_state || shuffleQueueIndex < shuffleQueue.length){
+            playSong(shuffleQueueIndex);
             return;
         }
     }
@@ -240,20 +246,26 @@ function playSong(songQueueIndex){
     //audioElement.src = `/songs/${songIndex+1}.mp3`;
 
     let songToBePlayed = songs[songsQueue[songQueueIndex]];
-
+    if(shuffle_state){
+        songToBePlayed = songs[shuffleQueue[songQueueIndex]];
+    }
     audioElement.src = songToBePlayed.filePath;
     masterSongName.innerText = songToBePlayed.songName;
     audioElement.currentTime = 0;
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
-    gif.style.opacity = 0;
+    gif.style.opacity = 1;
 }
 
 //function to add song in queue
 
 function addInQueue(songIndex){
-    songsQueue.push(songIndex);
+    if( !shuffle_state ){
+        songsQueue.push(songIndex);
+    }else{
+        shuffleQueue.push(songIndex);
+    }
 }
 
 
@@ -268,7 +280,14 @@ function redrawShuffle(){
     // adding and removing color
     if(shuffle_state){
         shuffle.classList.add('blue');
+        // copy songsQueue and shuffle it  completely
+        shuffleQueue = [];
+        for (let i = 0; i < songsQueue.length; i++) {
+            shuffleQueue.push(songsQueue[i]);
+        }
+        shuffleArray(shuffleQueue, songsQueue[songQueueIndex]);
     } else {
+        // start using the normal shuffle after removeing shuffle
         shuffle.classList.remove('blue');
     }
 }
@@ -298,6 +317,31 @@ function redrawRepeat(){
         repeat.classList.remove("fa-repeat");
         repeat.classList.add("fa-person-walking-arrow-loop-left");
     }
+}
+//function to shuffle complete array
+// using  - Fisher-Yates (aka Knuth) Shuffle.
+function shuffleArray(array , value) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+
+    // replace the 1st element of array with current song
+    let indexOfCurrentSong = array.indexOf(value);
+    let valueOfCuurentSong = array[indexOfCurrentSong];
+    array[indexOfCurrentSong] = array[0];
+    array[0] = valueOfCuurentSong;
+    shuffleQueueIndex = 0;
+    return array;
 }
 
 // Event Listener calls next method when song ended
