@@ -1,0 +1,336 @@
+.mn_menu{
+    z-index: 1;
+    height: 100vh;
+    width: 85%;
+}
+
+.mn_menu .sliderContainer{
+    margin: 0px 12px 12px 12px;
+    height: 350px;
+    position: relative;
+}
+
+.mn_menu .sliderContainer .slides .slider-img{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    /* filter: grayscale(10); */
+}
+
+.mn_menu .sliderContainer .slides .rmvFltr{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.mn_menu .sliderContainer .btmEffect{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 10rem;
+    background-image: linear-gradient(transparent,rgba(0,0,0,1));
+}
+
+.mn_menu .sliderContainer .topEffect{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 3rem;
+    background-image: linear-gradient(transparent,rgba(0,0,0,0.2)); 
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-direction: row-reverse; */
+}
+
+.mn_menu .sliderContainer .topEffect form{
+    display: flex;
+    align-items: center;
+}
+
+.mn_menu .sliderContainer .topEffect form i{
+    color: white;
+    margin-right: -6px;
+    margin-left: 12px;
+    font-size: 17px;
+    margin-top: 3px;
+}
+
+.mn_menu .sliderContainer .topEffect input[type="text"]{
+    height: 25px;
+    width: 175px;
+    border-radius: 20px;
+    border: 1px solid white;
+    background: none;
+    /* background: rgb(118, 127, 130); */
+    padding-left: 10px;
+    margin-left: 12px;
+    color: white;
+}
+
+.mn_menu .sliderContainer .topEffect #logout-btn{
+    /* margin-right:40px !important; */
+    border: 0px solid white !important;
+    background-color: #191414;
+    border-radius: 5px !important;
+    padding: 4px;
+    font-family:cursive;
+    font-weight: 200;
+    margin-top: 5px;
+}
+
+.mn_menu .sliderContainer .topEffect #logout-btn:hover{
+    color: white !important;
+}
+
+.mn_menu .sliderContainer .topEffect .lg-sg a:hover{
+    cursor:pointer;
+}
+
+.mn_menu .sliderContainer .topEffect a{
+    font-size: 18px;
+    color: rgb(219, 229, 232);
+    text-decoration: none;
+    margin: auto;
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center;
+    font-weight: 400;
+    font-family: cursive;
+}
+
+.mn_menu .sliderContainer .topEffect a:hover{
+    color:black;
+    border:1px solid black
+}
+
+.mn_menu .sliderContainer .slides .slideContent{
+    position:absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .middle h1{
+    color: white;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .middle i{
+    font-size: 30px;
+    color: white;
+    z-index: 3;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .bottom a{
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px;
+    margin: 0px 25px;
+    border: 1px solid white;
+    border-radius: 30px;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .bottom i{
+    font-size: 16px;
+    margin: 0px 6px;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .bottom span{
+    font-size: 23px;
+    margin: 0px 1px;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .bottom #btm1{
+    background-color: #1DB954;
+    color: black;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .bottom #btm1:hover{
+    background-color: rgb(0, 255, 0);
+}
+
+.mn_menu .sliderContainer .slides .slideContent .bottom #btm1 span{
+    color: black;
+    font-weight: 500;
+}
+
+.mn_menu .sliderContainer .slides .slideContent .bottom #btm2{
+    background-color: #191414;
+}
+
+/* Animations for carousel */
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 0.3s;
+    animation-name: fade;
+    animation-duration: 0.8s;
+    animation-delay: 0.3ms;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: 0.9}
+    to {opacity: 1}
+}
+  
+@keyframes fade {
+    from {opacity: 0.9}
+    to {opacity: 1}
+}
+
+.slide{
+    display: none;
+}
+
+/* Desigining the Recently section */
+
+
+.mn_menu .songs-container{
+    height: 300px;
+    overflow-y: scroll;
+    /* overflow-x: scroll; */
+}
+
+
+.mn_menu .songs-container .songs-row .songs-card{
+    /* position: relative; */
+    display: flex;
+    min-height: 250px;
+    max-height: 500px;
+    /* margin: 12px; */
+    justify-content: left;
+    align-items: center;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    margin-right: 7px;
+    flex-wrap: wrap;
+    /* margin: auto; */
+}
+
+
+.mn_menu .songs-container .songs-row .songs-card .songs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    max-height:300px;
+    width: 172px;
+    background-color: rgb(20, 18, 18);
+    border-radius: 10px;
+    margin-left: 12px;
+}
+
+.mn_menu .songs-container .songs-row .songs-card .songs a{
+    position: absolute;
+    color: rgb(0, 101, 0);
+    font-size: 0px;
+}
+
+
+.mn_menu .songs-container .songs-row .songs-card .songs:hover
+{
+    background-color: black;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+    transform:scale(1.02);
+}
+
+/* + helps in changing thwe css for another div component when hovering on some */
+
+.mn_menu .songs-container .songs-row .songs-card .songs img:hover{
+    filter: grayscale(10);
+}
+
+.mn_menu .songs-container .songs-row .songs-card .songs img:hover + a{
+  font-size: 32px;
+}
+
+.mn_menu .songs-container .songs-row .songs-card .songs a:hover{
+    font-size: 32px;
+}
+
+.mn_menu .songs-container .songs-row .songs-card .songs img{
+    height: 165px;
+    width: 160px;
+}
+
+.mn_menu .songs-container .songs-row .songs-card .songs #name{
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: cursive;
+    margin-top: 5px;
+    height: 22px;
+    width: 150px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.mn_menu .songs-container .songs-row .songs-card .songs #singer{
+    color: rgb(118, 127, 130);
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 18px;
+    width: 150px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+
+.mn_menu .songs-container #recent{
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mn_menu .songs-container #recent span{
+    font-size: 18px !important;
+    margin-right: 12px;
+    color: rgb(251, 56, 56);
+    cursor: pointer;
+}
+
+.mn_menu .songs-container #recent span:hover{
+    color: #C71585;
+}

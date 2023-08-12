@@ -1,0 +1,55 @@
+.create-container{
+  position: absolute;
+  top:0px;
+  left:0px;
+  right:0ps;
+  bottom:0px;
+  height: 100vh;
+  width: 100%;
+  background: url("https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80") no-repeat center;
+  background-size: cover;
+  /* filter:grayscale(100%); */
+  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-container #heading{
+    color: #fff;
+    font-size: 50px;
+}
+
+.create-container .create-btn{
+    text-decoration: none;
+    height: 60px;
+    font-size: 30px;
+    margin:20px 0px;
+    padding: 10px;
+    border:0px solid white;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    color: white;
+}
+
+.create-container .create-btn:hover{
+    background: #2c65d6;
+}
+
+.create-container p{
+    color: black;
+    font-size: 18px;
+}
+
+.create-container .login-btn{
+    margin-left:10px;
+    color: #bc1888;
+    border-radius: 30px;
+    color: black;
+    text-decoration: none;
+}
+
+.create-container .login-btn:hover{
+    color: #dc2743;
+}

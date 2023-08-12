@@ -1,0 +1,6 @@
+export const PLAY_SONGS = "PLAY_SONGS";
+export const PLAY_QUEUE = "PLAY_QUEUE";
+export const REMOVE_QUEUE = "REMEOVE_QUEUE";
+export const FREE_QUEUE_STATUS = "FREE_QUEUE_STATUS";
+export const IS_MEDIA_LIKED = "IS_MEDIA_LIKED";
+export const CLEAR_USER_MEDIA = "CLEAR_USER_MEDIA";

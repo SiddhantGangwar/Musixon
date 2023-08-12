@@ -1,0 +1,134 @@
+.search-container{
+    z-index: 1;
+    height: 100vh;
+    /* width: 1286px; */
+    width: 85%;
+}
+
+.search-container #head-search{
+    color: #fff;
+    margin-left: 18px;
+    margin-top: 24px;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: -12px;
+}
+
+.search-container #head-search span{
+    font-size: 18px !important;
+    margin-right: 18px;
+    color: rgb(251, 56, 56);
+    cursor: pointer;
+}
+
+.search-container #head-search span:hover{
+    color: #C71585;
+}
+
+.search-container .song-result{
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.search-container .song-result .song-card{
+    display: flex;
+    min-height: 240px;
+    justify-content: left;
+    align-items: center;
+    /* overflow-x: scroll; */
+    overflow-y: scroll;
+    margin-right: 12px;
+    /* flex-wrap: wrap; */
+}
+
+.search-container .song-result .song-card a{
+    text-decoration: none;
+}
+
+.search-container .song-result .song-card .songs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    max-height:320px;
+    width: 170px;
+    background-color: rgb(20, 18, 18);
+    border-radius: 10px;
+    margin-left: 12px;
+}
+
+.search-container .song-result .song-card .songs img{
+    height:150px;
+    width:150px;
+}
+
+.search-container .song-result .song-card .songs a{
+    position: absolute;
+    color: rgb(0, 101, 0);
+    font-size: 0px;  
+}
+
+.search-container .song-result .song-card .songs img:hover+a{
+    font-size: 38px;
+}
+
+.search-container .song-result .song-card .songs a:hover{
+    font-size: 38px; 
+}
+
+.search-container .song-result .song-card .songs i{
+    position: absolute;
+    color: rgb(0, 101, 0);
+    font-size: 0px;
+}
+
+.search-container .song-result .song-card .songs img:hover{
+    filter: grayscale(100%);
+}
+
+.search-container .song-result .song-card .songs img:hover+i{
+    font-size: 38px;
+}
+
+.search-container .song-result .song-card .songs i:hover{
+    font-size: 38px; 
+}
+
+.search-container .song-result .song-card .songs #name{
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: cursive;
+    margin-top: 8px;
+    height: 26px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+.search-container .song-result .song-card .songs #singer{
+    color: rgb(118, 127, 130);
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 18px;
+    width: 150px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.search-container .song-result .song-card .songs:hover{
+    background-color: black;
+    cursor: pointer;
+    transform:scale(1.02);
+}

@@ -1,0 +1,235 @@
+.overLay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: url("https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+  no-repeat center;
+  background-size: cover;
+  z-index: 5;
+}
+
+.overLay .lg-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  background-color: black;
+  height: 580px;
+  width: 400px;
+  margin: auto;
+}
+
+.overLay .sg-container {
+  height: 610px !important;
+}
+
+.overLay .fg-container{
+  max-height: 350px !important;
+}
+
+.overLay .rg-container{
+  max-height: 440px !important;
+}
+
+.overLay .eg-container{
+  width: 550px !important;
+  height: 350px !important;
+  justify-content: space-evenly !important;
+  background:#fff !important;
+}
+.overLay .lg-container .top-lg i {
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 125px;
+  margin-top: -30px;
+}
+
+.overLay .lg-container .top-lg .sg-tp-icon{
+  margin-top: -20px !important;
+}
+
+
+.overLay .lg-container .top-lg i:hover {
+  color: #2c65d6;
+  cursor: pointer;
+}
+
+.overLay .lg-container h2 {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.overLay .lg-container .h2-top {
+  margin-bottom: 60px !important;
+}
+
+.overLay .lg-container .otp-top{
+  margin-bottom: 15px !important;
+}
+
+.overLay .lg-container .lg {
+  width: 60%;
+  margin-bottom: 10px;
+}
+.overLay .lg-container .lg h2 {
+  margin-bottom: 32px;
+}
+
+.overLay .lg-container .lg .h2-lg {
+  margin-bottom: -15px !important;
+}
+
+.overLay .lg-container .lg .lg-sub {
+  margin-bottom: 7px !important;
+}
+
+.overLay .lg-container .sg h2 {
+  margin-bottom: 8px !important;
+  font-size: 22px;
+}
+
+.overLay .lg-container .gotologin a{
+  color: red;
+  text-decoration: none;
+}
+
+.overLay .lg-container .gotologin a:hover{
+  color: #2c65d6;
+}
+
+.overLay .lg-container .lg input[type="email"],
+.lg input[type="password"],
+.lg input[type="text"],.lg input[type="number"] {
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  outline: none;
+  color: white;
+  height: 35px;
+  font-size: 18px;
+}
+
+.overLay .lg-container .lg .input-margin {
+  margin-top: 32px;
+}
+
+.overLay .lg-container .lg input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #fb2525;
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.overLay .lg-container .lg input[type="submit"]:hover {
+  transition: 0.3ms ease-in-out;
+  background-color: #2c65d6;
+}
+
+.overLay .lg-container .avatar-img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-top: -85px;
+}
+
+.overLay .lg-container .sgavatar-img {
+  margin-top: -60px !important;
+}
+
+.overLay .lg-container .google-login {
+  width: 242px;
+  margin-top: 10px;
+}
+
+.overLay .lg-container .btm-content {
+  margin-top: 15px;
+  align-items: center;
+  display: flex;
+}
+.overLay .lg-container .btm-content p {
+  color: white;
+}
+.overLay .lg-container .btm-content a {
+  text-decoration: none;
+  color: #2c65d6;
+  margin-left: 10px;
+  border: 0px solid white;
+  border-radius: 30px;
+  padding: 3px;
+}
+
+.overLay .lg-container .btm-content a:hover {
+  color: #fb2525;
+}
+
+.overLay  .error-msg{
+  margin: 0px 0px 0px 2px;
+  min-height: 40px;
+  max-height: 50px;
+  width: 280px;
+  background-color: black;
+  z-index: 1;
+  border-bottom: 7px solid rgb(6, 192, 6);
+}
+
+.overLay  .error-msg p{
+  color: #fff;
+  font-size: 18px;
+  text-align: center; 
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+}
+.overLay  .error-msg p i{
+  color: #fb2525;
+}
+.overLay  .error-msg p i:hover{
+  color: #2c65d6;
+  cursor: pointer;
+}
+
+/* Verify email account css */
+
+.overLay .eg-container .top-eg img{
+  width: 200px;
+  height: 200px;
+}
+
+.overLay .eg-container .eg-con p{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+.overLay .eg-container .eg-con h2{
+  color: black;
+}
+
+.overLay .eg-container .eg-con p{
+  color: black;
+}
+
+.overLay .eg-container .eg-con p a{
+  text-decoration: none;
+  color: red;
+}
+
+.overLay .eg-container .eg-con p a:hover{
+  color: #2c65d6;
+}

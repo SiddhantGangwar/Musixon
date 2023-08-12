@@ -1,0 +1,208 @@
+/* Designing of left sidebar */
+.lf_menu{
+  z-index: 1;
+  width: 15%;
+  height: 100vh;
+  min-height: 100vh;
+  background:rgba(0,0,0,1);
+  padding: 15px 30px;
+  overflow: hidden;
+  transition: all 0.2 cubic-bezier(0,.75,.7,.42);
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.lf_menu .logoContainer{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lf_menu .first-logo{
+  font-size: 30px;
+}
+
+.lf_menu .logoContainer .second-logo{
+  font-size: 20px;
+}
+
+/* css for navigations links */
+
+.lf_menu .sectionContainer{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lf_menu .chSecContaier{
+  color: white;
+  display: flex;
+  margin-top: 20px;
+}
+
+.lf_menu .sectionContainer .chSecContaier .sec-logo{
+  font-size: 20px;
+}
+
+.lf_menu .sectionContainer .chSecContaier .sec-head{
+  color: rgb(118, 127, 130);
+  margin-left: 10px;
+  font-size: 18px;
+  font-family:cursive;
+  font-weight: 300;
+}
+
+.lf_menu .sectionContainer .chSecContaier a{
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.lf_menu .sectionContainer .chSecContaier .playList-sec{
+  display: flex;
+  flex-direction: column;
+}
+
+.lf_menu .sectionContainer .chSecContaier .playList-sec input[type="text"]{
+  margin-top: 12px;
+  height: 25px;
+  padding: 4px;
+  border: none;
+  border-radius: 8px;
+}
+
+.lf_menu .sectionContainer .chSecContaier .playList-sec input[type="submit"]{
+  margin-top: 12px;
+  margin-bottom: -5px;
+  width: 100%;
+  height: 25px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background-color: #fb2525;
+  font-size: 16px;
+  font-family: auto;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.lf_menu .sectionContainer  a:before{
+  position: absolute;
+  content: "";
+  width:0px;
+  height: 4%;
+  background: #ff3a7c;
+  margin-left: -25px;
+  margin-top: -3px;
+}
+
+.lf_menu .sectionContainer #playListName:before{
+  background: none !important;
+}
+
+.lf_menu .sectionContainer  a:hover::before,
+.lf_menu .sectionContainer  a.active::before
+{
+  width: 6px;
+  transition: 0.3ms;
+}
+
+.lf_menu .sectionContainer  a:hover .sec-head,
+.lf_menu .sectionContainer  a.active .sec-head
+{
+  color: white;
+}
+
+.lf_menu .sectionContainer .sec-head:hover{
+  color: #fff;
+}
+
+/* Designing of playList Container */
+
+.playListContainer{
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 30px;
+}
+
+.playListContainer .nameOfPlaylist{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.playListContainer .nameOfPlaylist p{
+  color: #fff;
+  font-size: 20px;
+}
+
+.playListContainer .nameOfPlaylist i{
+  font-size: 20px;
+  margin-top: 7px;
+}
+
+.playListContainer .playlistContent{
+  margin-top: 20px;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.playListContainer .playlistContent .childPlay{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.playListContainer .playlistContent .childPlay a{
+  text-decoration: none;
+  color: rgb(118, 127, 130);
+  font-size: 20px;
+  /* margin-left: 20px; */
+  font-weight: 350;
+  font-family:'Times New Roman', Times, serif;
+  text-overflow: ellipsis; /*if the text became bigger it avoid it by .... */
+  overflow: hidden;
+  display: inline; /*It not goes into second line */
+}
+
+.playListContainer .playlistContent .childPlay i{
+  color: white;
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.playListContainer .playlistContent .childPlay a:hover{
+  color: white;
+  transition: 0.3s;
+}
+
+/* making left sidebar responsive */
+
+@media screen and (max-width : 700px){
+  .lf_menu{
+    width: 65px;
+    min-width: 65px;
+  }
+  .playListContainer{
+    display: none;
+  }
+  .lf_menu .sectionContainer span{
+    display: none;
+  }
+  .lf_menu .logoContainer h2,.second-logo{
+    display: none;
+  }
+  .lf_menu .sectionContainer .chSecContaier .sec-logo{
+    font-size: 35px;
+    margin: -10px;
+  }
+  .lf_menu .sectionContainer  a:before{
+    margin-top: 4px;
+  }
+  .lf_menu .logoContainer .first-logo{
+    font-size: 35px;
+    margin: -12px;
+  }
+}

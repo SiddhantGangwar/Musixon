@@ -1,0 +1,220 @@
+.profileContainer{
+    z-index: 1;
+    width: 85%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileContainer .lfx-sd-con{
+   width: 20%;
+   height: 100vh;
+   background: black;
+   display: flex;
+   flex-direction: column;
+}
+
+.profileContainer .lfx-sd-con .profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+ 
+}
+
+.profileContainer .lfx-sd-con .profile-avatar img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.profileContainer .lfx-sd-con .account-route i{
+    font-size: 22px;
+}
+
+.profileContainer .lfx-sd-con .account-route{
+    color: white;
+    display: flex;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-left: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.profileContainer .lfx-sd-con .account-route #accx{
+    margin-left: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.profileContainer .lfx-sd-con .account-route #accx:hover{
+    color: #fb2525;
+}
+
+.profileContainer .rhx-sd-con{
+  width: 50%;
+  height: 100vh;
+  background:white;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileContainer .rhx-sd-con .top-prof-content{
+  margin-left: 20px;
+  margin-top: 24px;
+  border-bottom: 1px solid rgba(25, 17, 17, 0.2);
+}
+
+.profileContainer .rhx-sd-con .top-prof-content h2{
+  font-size: 40px;
+  margin-bottom: 16px;
+  font-family: auto;
+}
+
+.profileContainer .rhx-sd-con .top-prof-content h3{
+    font-size: 24px;
+    font-style: bold;
+    margin-bottom: 20px;
+}
+
+.profileContainer .rhx-sd-con .top-prof-content p{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    font-size: 20px;
+    font-weight: 400;
+    color: gray;
+}
+
+.profileContainer .rhx-sd-con .top-prof-content span{
+    color: black !important;
+    margin-right: 7px;
+}
+
+.profileContainer .rhx-sd-con .plan-content{
+    margin-left: 20px;
+    margin-top: 20px;
+    border-bottom: 1px solid rgba(25, 17, 17, 0.2);
+}
+
+.profileContainer .rhx-sd-con .plan-content h2{
+    font-size: 24px;
+    font-style: bold;
+    margin-bottom: 20px;
+}
+
+.profileContainer .rhx-sd-con .plan-content p{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.profileContainer .rhx-sd-con .plan-content .plan-box{
+    background: gray;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100px;
+}
+
+.profileContainer .rhx-sd-con .plan-content .plan-box h3{
+    margin-left: 24px;
+    font-size: 24px;
+    color: black;
+    font-weight: bolder;
+}
+
+.profileContainer .rhx-sd-con .policy-content{
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.profileContainer .rhx-sd-con .policy-content h2{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.profileContainer .rhx-sd-con .policy-content p{
+    font-size: 16px;
+    font-weight: 450;
+    margin-bottom: 10px;
+}
+
+.profileContainer .rhx-sd-con .form-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+    margin-top: 24px;
+}
+
+.profileContainer .rhx-sd-con .form-container .input-detail h3{
+    font-size: 16px;
+    font-weight: 500;
+    font-family: inherit;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.profileContainer .rhx-sd-con .form-container .input-detail #inp-hx-wd{
+    height: 40px;
+    width: 90%;
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.profileContainer .rhx-sd-con .form-container h2{
+  font-size: 40px;
+  margin-bottom: 16px;
+  font-family: auto;
+}
+
+.profileContainer .rhx-sd-con .form-container .submit-btn{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.profileContainer .rhx-sd-con .form-container .submit-btn button{
+    margin-top: 20px;
+    height: 45px;
+    width: 120px;
+    border: none;
+    border-radius: 20px;
+    background: #1ED760;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 60px;
+    font-family: inherit;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.profileContainer .rhx-sd-con .form-container .submit-btn button:hover{
+    background: rgba(30,215,96,0.8);
+}
+
+.profileContainer .rhx-sd-con .form-container #back-msg{
+  align-items: center;
+  margin-top: 15px;
+  font-size: 17px;
+  font-family: auto;
+  font-weight: 400;
+  background: rgba(30,215,96,0.8);
+  height: 30px;
+  padding: auto;
+  justify-content: center;
+  display: flex;
+  width: 90%;
+  border-radius: 20px;
+}

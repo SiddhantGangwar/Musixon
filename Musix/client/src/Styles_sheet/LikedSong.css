@@ -1,0 +1,102 @@
+.liked-song-container{
+    z-index: 1;
+    height:100vh;
+    width: 85%;
+}
+
+.liked-song-container .top-lk-sec{
+    margin: 0px 12px 12px 12px;
+    height: 300px;
+    position: relative;
+    background-color:rgb(26 60 76);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.liked-song-container .top-lk-sec .img-lk-sec img{
+    height: 250px;
+    width: 250px;
+    margin-left: 50px;
+}
+
+.liked-song-container .top-lk-sec .content-lk-sec{
+    margin-left:30px
+}
+
+.liked-song-container .top-lk-sec .content-lk-sec h3{
+    color: white;
+    font-size: 70px;
+}
+
+.liked-song-container .top-lk-sec .content-lk-sec #lk-playlist{
+    color: white;
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 10px;
+}
+
+.liked-song-container .top-lk-sec .content-lk-sec #lk-playlist i{
+    position: relative;
+    top: 1px;
+    font-size: 18px;
+    margin-left: 7px;
+}
+
+.liked-song-container .top-lk-sec .content-lk-sec #lk-playlist i:hover{
+    color: #fb2525;
+    cursor: pointer;
+}
+
+.liked-song-container .top-lk-sec .content-lk-sec #lk-song-count{
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+    bottom: 40px;
+    position: absolute;
+}
+
+.liked-song-container .top-lk-sec .btmEffect{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 4rem;
+    background-image: linear-gradient(transparent,rgba(0,0,0,0.7));
+}
+
+.liked-song-container .artist-container .musicList .title-lk{
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    font-family:'Times New Roman', Times, serif;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1)
+}
+
+.liked-song-container .artist-container .musicList .title-lk i{
+    font-size: 30px;
+    color: green;
+    margin: 0px 24px;
+}
+
+.liked-song-container .artist-container .musicList .title-lk i:hover{
+    font-size: 32px;
+    color: rgb(0, 255, 0);
+    cursor: pointer;
+}
+
+.liked-song-container .artist-container .musicList .title-lk p{
+    display: flex;
+    align-items: center;
+    color: rgb(202, 215, 211);
+}
+
+
+.liked-song-container .artist-container .musicList .inc-song-cont-hgt{
+    height: 300px !important;
+}

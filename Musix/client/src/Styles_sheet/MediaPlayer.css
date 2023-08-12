@@ -1,0 +1,186 @@
+.music-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.music-container .left-music-part{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    width: 350px;
+}
+
+.music-container .left-music-part img{
+    height: 60px;
+    width: 60px;
+}
+
+.music-container .left-music-part .content-music-lf{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.music-container .left-music-part .content-music-lf #msc-con1{
+    color: white;
+    font-size: 18px;
+    font-family: cursive;
+    font-weight: 300;
+    height: 25px;
+    overflow-y: scroll;
+}
+
+.music-container .left-music-part .content-music-lf #msc-con2{
+    margin-top: 5px;
+    height: 18px;
+    overflow-y: scroll;
+    color: rgb(118, 127, 130);
+    font-size: 16px;
+    font-weight: 200;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.music-container .left-music-part i{
+    font-size: 18px;
+    color: white;
+    margin-left: 16px;
+}
+
+.music-container .left-music-part i:hover{
+    cursor: pointer;
+}
+
+.music-container .left-music-part #liked{
+    color: green !important;
+}
+
+.music-container .middle-music-part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+    position: relative;
+    margin-left: -145px;
+    margin-bottom: 10px;
+}
+
+.music-container .middle-music-part .top-middle-msc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.music-container .middle-music-part .top-middle-msc i{
+    color: white;
+    font-size: 24px;
+    margin: 0px 12px;
+}
+
+.music-container .middle-music-part .top-middle-msc #doShuffle:hover{
+    color: #1DB954;
+}
+
+.music-container .middle-music-part .top-middle-msc #play-msc{
+    font-size: 30px;
+}
+
+.music-container .middle-music-part .top-middle-msc #repeat-now:hover{
+    color: #1DB954;
+}
+
+.music-container .middle-music-part .top-middle-msc #repeat-now{
+    color: green !important;
+}
+
+.music-container .middle-music-part .btm-middle-msc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.music-container .middle-music-part .btm-middle-msc .duration{
+    color:rgb(118, 127, 130);
+    margin:0px 10px;
+    font-size: 16px;
+}
+
+.music-container .middle-music-part .btm-middle-msc #range{
+   position: relative;
+   width: 500px;
+   margin-top:3px;
+   height: 5px;
+   outline: none;
+   border: none;
+   border-radius: 10px;
+   /* appearance: none;  */
+   background:rgb(118, 127, 130);
+   cursor: pointer;
+   overflow: hidden;
+}
+
+.music-container .middle-music-part .btm-middle-msc #range:before{
+    position: absolute;
+    content: "";
+    top:0px;
+    left:0px;
+    background-color: #1DB954;
+    /* width: var(--player-played); */
+    height: 100%;
+    z-index: 2;
+    border-radius: 10px;
+}
+
+/* .music-container .middle-music-part .btm-middle-msc #range::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 15px;
+    width:15px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+} */
+
+.music-container .middle-music-part .top-middle-msc i:hover{
+  color: rgb(118, 127, 130);
+}
+
+.music-container .right-music-part{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.music-container .right-music-part i{
+    color: white;
+    font-size: 22px;
+    margin-right: 8px;
+}
+
+.music-container .right-music-part i:hover{
+    color: rgb(118, 127, 130);
+}
+
+.music-container .right-music-part #volume{
+    width: 100px;
+    margin-right: 12px;
+    margin-bottom: 4px;
+    height: 5px;
+    outline: none;
+    border-radius: 10px;
+    overflow: none;
+    cursor: pointer;
+    /* appearance: none; */
+}
+
+.music-container .right-music-part #volume::before{
+    position: absolute;
+    content: "";
+    top:0px;
+    left:0px;
+    background-color: #1DB954;
+    height: 100%;
+    z-index: 2;
+    border-radius: 10px;
+}
