@@ -5,11 +5,7 @@ Our site is live at https://musixon-coffee.netlify.app/
 <br>
 Here We are attaching some photos of our Webapp
 
-<p align="center">
-  <img src="https://github.com/manish5200/Musixon/blob/main/MusixON%20photos/Screenshot%20(281).png" width="350" title="hover text">
-  <img src="https://github.com/manish5200/Musixon/blob/main/MusixON%20photos/Screenshot%20(281).png" width="350" alt="accessibility text">
-</p>
-
+![](https://github.com/manish5200/Musixon/blob/main/MusixON%20photos/Screenshot%20(281).png)
 This app is fully based on react.js for frontend and node.js,mongoose and mongoDB for backend and database.
 
 Created with Love :heart:
